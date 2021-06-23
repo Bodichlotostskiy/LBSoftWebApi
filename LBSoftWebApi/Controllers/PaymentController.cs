@@ -23,34 +23,34 @@ namespace LBSoftWebApi.Controllers
             this.checkAccount = checkAccount;
         }
         /// <summary>
-        /// return check of account
+        /// Check for account availability 
         /// </summary>
         /// <param name="accountNumber"></param>
-        /// <returns></returns>
+        /// <returns>check of account</returns>
         [HttpGet("/{accountNumber}")]
         public async Task<bool> CheckAccount(int accountNumber)
         {
             return await checkAccount.PushCheckAccountAsync(accountNumber);
         }
         /// <summary>
-        /// return Paymants model
+        /// create payment
         /// </summary>
         /// <param name="payment"></param>
-        /// <returns></returns>
+        /// <returns>new Payments model</returns>
         [HttpPut]
         public async Task<Payment> MakingPayment(PaymentModel payment)
         {
             return await makingPayment.MakePayment(payment);
         }
         /// <summary>
-        /// return 
+        /// check for payment and, if available, returns the Status or if non avaible - null
         /// </summary>
         /// <param name="paymentNumber"></param>
-        /// <returns></returns>
+        /// <returns>Status of Payment</returns>
         [HttpGet("/{paymentNumber}")]
-        public async Task<bool> CheckPayment(int paymentNumber)
+        public async Task<Status> CheckPayment(int paymentNumber)
         {
-            return await checkPayment.PushCheckPaymentAsync(paymentNumber);
+            return (await checkPayment.PushCheckPaymentAsync(paymentNumber)).Status;
         }
 
     }

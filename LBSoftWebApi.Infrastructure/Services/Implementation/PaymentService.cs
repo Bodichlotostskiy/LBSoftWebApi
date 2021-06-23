@@ -80,16 +80,16 @@ namespace LBSoftWebApi.Infrastructure.Services.Implementation
                 return Task.FromResult(false);
         }
 
-        public Task<bool> PushCheckPaymentAsync(int paymentNumber)
+        public async Task<Payment> PushCheckPaymentAsync(int paymentNumber)
         {
             var payment = payments.FindAsync(paymentNumber).Result;
             if (payment != null)
             {
-                
-                return Task.FromResult(true);
+
+                return (Payment)await payments.GetWithIncludeAsync(d => d.PaymentNumber.Equals(paymentNumber), d => d.Status);
             }
             else
-                return Task.FromResult(false);
+                return null;
         }
 
        

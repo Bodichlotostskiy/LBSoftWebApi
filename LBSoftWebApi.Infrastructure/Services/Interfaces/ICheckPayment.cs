@@ -8,6 +8,6 @@ namespace LBSoftWebApi.Infrastructure.Services.Interfaces
 {
     public interface ICheckPayment
     {
-        Task<bool> PushCheckPaymentAsync(int paymentNumber);
+        Task<Payment> PushCheckPaymentAsync(int paymentNumber);
     }
 }
