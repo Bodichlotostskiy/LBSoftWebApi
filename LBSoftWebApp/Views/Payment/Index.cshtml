@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+<h2>Payment</h2>
+
+<p>Write Account number and amount to create payment</p>
+
+@using (Html.BeginForm("MakePayment", "Payment", FormMethod.Post))
+{
+    <p>
+        <label>Account Number</label>
+        <input type="text" name="AccountNumber" />
+    </p>
+    <p>
+        <label>Amount</label>
+        <input type="text" name="Amount" />
+    </p>
+
+    <p>
+        <input type="submit" value="MakePayment" />
+    </p>
+}
+
+<p>--------------------------------------------------------------------------------------------- </p>
+<p>Or</p>
+
+<p>Check your payment</p>
+
+@using (Html.BeginForm("CheckStatus", "Payment", FormMethod.Get))
+{
+<p>
+    <label>Payment Number</label>
+    <input type="text" name="paymentNumber" />
+</p>
+
+<p>
+    <input type="submit" value="CheckStatus" />
+</p>
+        }
+

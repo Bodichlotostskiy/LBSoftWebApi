@@ -1,0 +1,15 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Account</h2>
+
+<p>Write your Account number</p>
+
+@using (Html.BeginForm("Check", "Account" , FormMethod.Post))
+{
+    <input type="text" name="AccountNumber"  />
+
+    <input type="submit" value="Check" />
+}
+
